@@ -1,7 +1,7 @@
 ### chap13/play.py
 import re
 
-p_string = input('Regex: ')
+p_string = input('RE: ')
 p = re.compile(p_string)
 
 print(f"\nWhat strings are in the language of '{p_string}'?")

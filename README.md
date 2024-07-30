@@ -1,6 +1,7 @@
 This directory contains everything needed for
 **Chapter 13 (Rewrite the Error Messages)** in
-*Computational Thinking and Problem Solving*.
+[*Computational Thinking and Problem Solving (CTPS)*](https://profsmith89.github.io/ctps/ctps.html)
+by Michael D. Smith.
 
 `broken.py`: A script with a straightforward error.
 
