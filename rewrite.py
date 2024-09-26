@@ -5,22 +5,8 @@ import sys
 
 # Terminal colors
 reset = '\033[0m'
-black = '\033[30m'
 red = '\033[31m'
-green = '\033[32m'
-orange = '\033[33m'
 blue = '\033[34m'
-purple = '\033[35m'
-cyan = '\033[36m'
-lightgrey = '\033[37m'
-darkgrey = '\033[90m'
-lightred = '\033[91m'
-lightgreen = '\033[92m'
-yellow = '\033[93m'
-lightblue = '\033[94m'
-pink = '\033[95m'
-lightcyan = '\033[96m'
-
 
 def get_fname(fullpath):
     '''Strip full pathname down to just the filename'''
@@ -120,13 +106,16 @@ def rewrite_emsg(e):
     lines = e.split('\n')
     i = 0
 
-    # Verify "Traceback" block comes first and then process it
-    assert re.match('Traceback', lines[i]), \
-           'No traceback at start of e'
-    i, stack = process_traceback(lines, i)
+    if lines[0][:len('Traceback')] == 'Traceback':
+        # Found a runtime error
+        i, stack = process_traceback(lines, i)
+    else:
+        # Found a syntax error
+        print(f'[rewrite]: This tool only rewrites runtime (not syntax) error messages')
+        return
 
     # Verify "*Error" block comes next and print it
-    assert re.match('.+Error:', lines[i]), \
+    assert re.match(r'.+Error:', lines[i]), \
            'No error after traceback'
     print_error(stack, lines[i])
 
@@ -140,7 +129,7 @@ def main():
     if len(sys.argv) == 1:
         # Test this script in this manner:
         #   python3 brokenscript.py 2> >(python3 rewrite.py)
-        # which uses more redirection magic.
+        # which uses redirection magic.
         e = sys.stdin.read()
         rewrite_emsg(e)
 

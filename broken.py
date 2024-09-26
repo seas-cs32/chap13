@@ -5,15 +5,15 @@ def f_undef_name():
     print(undef_name)
 
 def main():
-    s1 = 'this is a test'
-    s2 = 'This is another test.'
-
-    # Process these strings in similar, but not quite
+    # Process two strings in similar, but not quite
     # the same manner.
 
+    s1 = 'this is a test'
     p = re.compile('[a-z]+', re.IGNORECASE)
-    print(p.findall(s1))
+    wlist = p.findall(s1)
+    print(wlist)
     
+    s2 = 'This is another test.'
     wlist = re.findall(r'[a-z]+', s2)
     print(wlist)
     

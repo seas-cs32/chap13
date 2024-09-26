@@ -1,7 +1,5 @@
 #!/usr/bin/env python3
 ### chap13/python32.py
-import os
-import re
 import subprocess
 import sys
 
