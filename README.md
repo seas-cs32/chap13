@@ -5,7 +5,10 @@ by Michael D. Smith.
 
 `broken.py`: A script with a straightforward error.
 
-`out*.txt`: Captures of the different outputs from `broken.py`.
+`data`: A directory where we create and store different data files.
+
+`data/broken_out*.txt`: Captures of the different outputs from `broken.py`
+when the book's author ran it.
 
 `play.py`: A script that allows you to explore the strings in a
 language defined by a regular expression.
