@@ -85,7 +85,6 @@ def print_error(stack, err_msg):
 
         # Print error with context
         print(f'{(lnno-1):>{cols}}:', script[lnno-2], file=sys.stderr)
-        #print(f'{red}{(lnno):>{cols}}: {lines[i - 1]}{reset}', file=sys.stderr)
         print(f'{red}{(lnno):>{cols}}: {script[lnno-1]}{reset}', file=sys.stderr)
         print(f'{(lnno+1):>{cols}}:', script[lnno], file=sys.stderr)
         print("", file=sys.stderr)
