@@ -37,8 +37,15 @@ def process_traceback(lines, i):
         if m.group('fname')[:len(cwd)] == cwd:
             stack.insert(0, m.groupdict())
 
-        i += 2
-        assert i < len(lines)
+        # Skip lines with more than two opening spaces
+        while True:
+            i += 1
+            assert i < len(lines)
+            if lines[i][0:3] != '   ':
+                break
+
+    # Check for improper usage
+    assert len(stack) != 0, 'No frames in current working directory'
 
     # i indicates where to continue processing in lines
     return (i, stack)
